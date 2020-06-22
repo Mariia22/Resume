@@ -1,71 +1,42 @@
 "use strict";
 
+// Подключаем Gulp
 var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var sourcemap = require("gulp-sourcemaps");
-var sass = require("gulp-sass");
-var postcss = require("gulp-postcss");
-var csso = require("gulp-csso");
-var rename = require("gulp-rename");
-var autoprefixer = require("autoprefixer");
-var server = require("browser-sync").create();
-var del = require("del");
-var posthtml = require("gulp-posthtml");
-var include = require("posthtml-include");
-var htmlmin = require('gulp-htmlmin');
+var sass = require("gulp-sass"), // переводит SASS в CSS
+  cssnano = require("gulp-cssnano"), // Минимизация CSS
+  autoprefixer = require("gulp-autoprefixer"), // Проставлет вендорные префиксы в CSS для поддержки старых браузеров
+  concat = require("gulp-concat"), // Объединение файлов - конкатенация
+  rename = require("gulp-rename"); // Переименование файлов
 
-gulp.task("css", function () {
-  return gulp
-    .src("source/sass/style.scss")
-    .pipe(plumber())
-    .pipe(sourcemap.init())
-    .pipe(sass())
-    .pipe(postcss([autoprefixer()]))
-    .pipe(csso())
-    .pipe(rename("style.min.css"))
-    .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/css"))
-    .pipe(server.stream());
-});
-
-gulp.task("server", function () {
-  server.init({
-    server: "build/",
-    notify: false,
-    open: true,
-    cors: true,
-    ui: false
-  });
-
-  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css", "refresh"));
-  gulp.watch("source/*.html"), gulp.series("html", "refresh");
-});
-gulp.task("refresh", function (done) {
-  server.reload();
-  done();
-});
-gulp.task("del", function () {
-  return del("build");
-});
-
-
+// Копирование файлов HTML в папку dist
 gulp.task("html", function () {
-  return gulp
-    .src("source/*.html")
-    .pipe(posthtml([include()]))
-    .pipe(gulp.dest("build"));
+  return gulp.src("src/*.html")
+    .pipe(gulp.dest("dist"));
 });
 
-gulp.task("minify", () => {
-  return gulp.src("source/*.html")
-    .pipe(htmlmin({
-      collapseWhitespace: true
+// Объединение, компиляция Sass в CSS, простановка венд. префиксов и дальнейшая минимизация кода
+gulp.task("sass", function () {
+  return gulp.src("src/sass/*.sass")
+    .pipe(concat('styles.scss'))
+    .pipe(sass())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
     }))
-    .pipe(gulp.dest("build"));
+    .pipe(cssnano())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest("dist/css"));
 });
 
-gulp.task(
-  "build",
-  gulp.series("del", "copy", "css", "minify", "html")
-);
-gulp.task("start", gulp.series("build", "server"));
+// Задача слежения за измененными файлами
+gulp.task("watch", function () {
+  gulp.watch("src/*.html", ["html"]);
+  gulp.watch("src/sass/*.sass", ["sass"]);
+});
+
+///// Таски ///////////////////////////////////////
+
+// Запуск тасков по умолчанию
+gulp.task("default", gulp.series("html", "sass", "watch"));
