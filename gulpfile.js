@@ -3,12 +3,43 @@
 // Подключаем Gulp
 var gulp = require("gulp");
 var sass = require("gulp-sass"), // переводит SASS в CSS
-  cssnano = require("gulp-cssnano"), // Минимизация CSS
-  autoprefixer = require("gulp-autoprefixer"), // Проставлет вендорные префиксы в CSS для поддержки старых браузеров
+  plumber = require("gulp-plumber"),
+  sourcemap = require("gulp-sourcemaps"),
+  sass = require("gulp-sass"),
+  postcss = require("gulp-postcss"),
+  autoprefixer = require("autoprefixer"),
+  csso = require("gulp-csso"),
+  rename = require("gulp-rename"),
   imagemin = require('gulp-imagemin'), // Сжатие изображение
-  concat = require("gulp-concat"), // Объединение файлов - конкатенация
   rename = require("gulp-rename"), // Переименование файлов
-  watch = require('gulp-watch');
+  server = require("browser-sync").create(),
+  del = require("del");
+
+// Сервер
+gulp.task("server", function () {
+  server.init({
+    server: "dist/",
+    notify: false,
+    open: true,
+    cors: true,
+    ui: false
+  });
+
+  gulp.watch("src/*.html", gulp.series("html", "refresh"));
+  gulp.watch("src/sass/style.scss", gulp.series("sass", "refresh"));
+  gulp.watch("src/images/*.+(jpg|jpeg|png|gif)", gulp.series("imgs", "refresh"));
+});
+
+// Обновление страницы
+gulp.task("refresh", function (done) {
+  server.reload();
+  done();
+});
+
+//Удаление ненужных файлов
+gulp.task("del", function () {
+  return del("dist");
+});
 
 // Копирование файлов HTML в папку dist
 gulp.task("html", function () {
@@ -26,27 +57,21 @@ gulp.task('imgs', function () {
     }))
     .pipe(gulp.dest("dist/images"))
 });
+
 // Объединение, компиляция Sass в CSS, простановка венд. префиксов и дальнейшая минимизация кода
 gulp.task("sass", function () {
-  return gulp.src("src/sass/*.sass")
-    .pipe(concat('styles.scss'))
+  return gulp
+    .src("src/sass/*.{scss,sass}")
+    .pipe(plumber())
+    .pipe(sourcemap.init())
     .pipe(sass())
-    .pipe(autoprefixer({
-      cascade: false
-    }))
-    .pipe(cssnano())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest("dist/css"));
-});
-
-//Задача слежения за измененными файлами
-gulp.task("watch", function () {
-  gulp.watch("src/*.html", gulp.series("html"));
-  gulp.watch("src/sass/*.sсss", gulp.series("sass"));
-  gulp.watch("src/images/*.+(jpg|jpeg|png|gif)", gulp.series("imgs"));
+    .pipe(postcss([autoprefixer()]))
+    .pipe(csso())
+    .pipe(rename("style.min.css"))
+    .pipe(sourcemap.write("."))
+    .pipe(gulp.dest("dist/css"))
+    .pipe(server.stream());
 });
 
 // Запуск тасков по умолчанию
-gulp.task("default", gulp.series("html", "sass", "watch"));
+gulp.task("default", gulp.series("del", "html", "sass", "imgs", "server"));
