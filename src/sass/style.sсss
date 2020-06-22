@@ -1,4 +1,0 @@
-.photo {
-    display: flex;
-    color: red;
-}
