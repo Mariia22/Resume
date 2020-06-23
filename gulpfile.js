@@ -26,7 +26,7 @@ gulp.task("server", function () {
   });
 
   gulp.watch("src/*.html", gulp.series("html", "refresh"));
-  gulp.watch("src/sass/*.{scss,sass}", gulp.series("sass", "refresh"));
+  gulp.watch("src/sass/**/*.{scss,sass}", gulp.series("sass", "refresh"));
   gulp.watch("src/images/*.+(jpg|jpeg|png|gif)", gulp.series("imgs", "refresh"));
 });
 
@@ -61,7 +61,7 @@ gulp.task('imgs', function () {
 // Объединение, компиляция Sass в CSS, простановка венд. префиксов и дальнейшая минимизация кода
 gulp.task("sass", function () {
   return gulp
-    .src("src/sass/*.{scss,sass}")
+    .src("src/sass/style.scss")
     .pipe(plumber())
     .pipe(sourcemap.init())
     .pipe(sass())
