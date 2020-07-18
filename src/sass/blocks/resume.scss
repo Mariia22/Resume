@@ -1,8 +1,12 @@
 .resume{
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-    "expierence general_skills"
-    "expierence soft_skills"
+    "expierence general_skill"
+    "expierence soft_skill"
+    "expierence language"
+    "expierence course"
+    "expierence project"
+    "education interest"
 }
