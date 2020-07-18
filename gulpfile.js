@@ -74,4 +74,4 @@ gulp.task("sass", function () {
 });
 
 // Запуск тасков по умолчанию
-gulp.task("default", gulp.series("del", "html", "sass", "imgs", "server"));
+gulp.task("start", gulp.series("del", "html", "sass", "imgs", "server"));
