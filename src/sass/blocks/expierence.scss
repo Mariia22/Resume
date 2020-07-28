@@ -1,3 +1,22 @@
-.expierence{
-    grid-area: expierence;
+.experience{
+    grid-area: experience;
+}
+.experience_work{
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+.experience_period{
+    margin: 0 0 0.3rem 0;
+    color: $green;
+}
+.experience_duties{
+    margin: 0 0 2rem 0;
+}
+.experience_duties li::before {
+    content: "•";
+    color: $green; 
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    padding-right: 10px;
 }

@@ -3,11 +3,12 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-    "expierence general_skill"
-    "expierence soft_skill"
-    "expierence language"
-    "expierence course"
-    "education interest"
+    "experience general_skill"
+    "experience soft_skill"
+    "experience language"
+    "experience course"
+    "education interest";
+    margin: 2rem 7.3rem;
 }
 
 .visually-hidden{
@@ -16,4 +17,17 @@
 
 .html{
     font-size: $font-size;
+}
+
+h4{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+
+}
+
+h5{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 0.7rem 0;
 }
