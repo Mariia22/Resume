@@ -1,0 +1,39 @@
+
+.name{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: name;
+  border-bottom: 5px solid $green;
+  padding-bottom: 1.3rem;
+}
+.presentation{
+  width: 65%;
+}
+.contact{
+  grid-area: contact;
+  margin-top: 0.8rem;
+  border-bottom: 5px solid $green;
+  padding: 2rem;
+}
+
+.photo_image {
+  border: 5px solid $green;
+  border-radius: 50%;
+}
+.contact li{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.3rem;
+
+}
+.contact li:hover{
+  color: $green;
+}
+.contact svg{
+  margin-left: 0.5rem;
+}
+.contact svg:hover{
+  fill: $green;
+}

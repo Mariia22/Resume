@@ -1,3 +1,12 @@
 .language{
     grid-area: language;
 }
+
+.language li{
+    display: inline-block;
+    background-color: $green;
+    color: $invert-color;
+    margin: 0.2rem;
+    padding: 0.6rem;
+    border-radius: 5%;
+}

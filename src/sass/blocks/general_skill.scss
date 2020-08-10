@@ -1,3 +1,12 @@
-.general_skill{
-    grid-area: general_skill;
+.skill{
+    grid-area: skill;
+    padding-top: 1rem;
+}
+.skill li{
+    display: inline-block;
+    background-color: $green;
+    color: $invert-color;
+    margin: 0.3rem;
+    padding: 0.6rem;
+    border-radius: 5%;
 }
