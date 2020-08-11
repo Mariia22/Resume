@@ -6,24 +6,24 @@
     "name contact"
     "experience skill"
     "education course"
-    "language interest";
-  
+    "language interest"; 
 }
 
 .visually-hidden{
     visibility: hidden;
 }
 
-.html{
+html{
     font-size: $font-size;
 }
+
 h2{
     font-size: 2rem;
     font-weight: 200;
     margin: 0;
   }
   
-  h3{
+h3{
     font-size: 1.5rem;
     color: $green;
     font-weight: 100;
@@ -31,7 +31,7 @@ h2{
     margin-bottom: 0.5rem;
   }
   
-  a{
+a{
     text-decoration: none;
     color: $font-color;
   }

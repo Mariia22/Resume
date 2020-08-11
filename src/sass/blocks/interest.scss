@@ -1,3 +1,19 @@
 .interest{
     grid-area: interest;
 }
+.interest ul {
+    margin-bottom: 2rem;
+}
+.interest li {
+    display: flex;
+    justify-content: space-between;
+}
+.interest li:hover{
+    color: $green;
+  }
+.interest svg{
+    margin-left: 0.5rem;
+  }
+.interest svg:hover{
+    fill: $green;
+}
