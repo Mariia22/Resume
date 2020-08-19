@@ -1,14 +1,16 @@
 .resume{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-template-areas:
-    "name contact"
-    "experience skill"
-    "education course"
-    "language interest"; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "name" 
+  "experience"
+  "skill"
+  "education"
+  "course"
+  "language"
+  "interest"
+  "contact"; 
 }
-
 .visually-hidden{
     visibility: hidden;
 }
@@ -51,8 +53,34 @@ h5{
     margin-bottom: 0.7rem;
 }
 
-.wrapper{
-  margin: 1rem 7.3rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+
+@media (min-width: 1200px) {
+  .resume{
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 2fr 1fr;
+      grid-template-areas:
+      "name contact"
+      "experience skill"
+      "education course"
+      "language interest"; 
+  }
+
+  .wrapper{
+    margin: 1rem 7.3rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+  }
+
+@media (min-width:900px){
+  .resume{
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+    "name"
+    "experience skill"
+    "education course"
+    "language interest"
+    "contact"; 
+}
+
 }

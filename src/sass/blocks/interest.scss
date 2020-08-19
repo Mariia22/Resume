@@ -6,13 +6,15 @@
 }
 .interest li {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
+    margin-bottom: 0.3rem;
 }
 .interest li:hover{
     color: $green;
   }
 .interest svg{
     margin-left: 0.5rem;
+    margin-right: 1.5rem;
   }
 .interest svg:hover{
     fill: $green;
