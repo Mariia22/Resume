@@ -1,4 +1,17 @@
 .signature{
+    box-sizing: border-box;
+    margin: 0 2rem 2rem 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+    font-size: 0.5rem;  
+}
+.signature_text{
+    margin: 0;
+    padding:0;
+    text-align: justify;
+ }
+@media (min-width: 1200px) {
+    .signature{
     margin: 1rem 7.3rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -6,4 +19,5 @@
 }
 .signature_text{
    text-align: center;
+}
 }

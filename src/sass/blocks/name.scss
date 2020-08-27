@@ -1,39 +1,78 @@
-
 .name{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   grid-area: name;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
   border-bottom: 5px solid $green;
-  padding-bottom: 1.3rem;
+  text-align: center;
+  flex-wrap: wrap;
 }
-.presentation{
-  width: 65%;
+.presentation p{
+  text-align: justify;
+  font-size: 0.6rem;
 }
-.contact{
-  grid-area: contact;
-  margin-top: 2rem;
-  border-bottom: 5px solid $green;
-  padding: 2rem;
-}
-
 .photo_image {
   border: 5px solid $green;
   border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.contact{
+  grid-area: contact;
+  border-bottom: 5px solid $green;
 }
 .contact li{
   list-style: none;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-end;
   margin-bottom: 0.3rem;
-
+}
+.contact ul{
+  margin-bottom: 1rem;
 }
 .contact li:hover{
   color: $green;
 }
 .contact svg{
-  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 .contact svg:hover{
   fill: $green;
+}
+@media (min-width:900px){
+  .contact{
+    border-bottom: none;
+  }
+   
+}
+@media (min-width: 1200px) {
+  .name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: name;
+    border-bottom: 5px solid $green;
+    padding-bottom: 1.3rem;
+  }
+  .contact{
+    grid-area: contact;
+    margin-top: 2rem;
+    border-bottom: 5px solid $green;
+    padding: 2rem;
+  }
+  .presentation{
+    width: 60%;
+  }
+  .contact li{
+    justify-content: flex-end;
+  }
+  .contact svg{
+    margin-left: 0.5rem;
+  }
+  .presentation p{
+    text-align: justify;
+    font-size: 1rem;
+  }
 }

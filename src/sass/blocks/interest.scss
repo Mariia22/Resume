@@ -2,7 +2,7 @@
     grid-area: interest;
 }
 .interest ul {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .interest li {
     display: flex;
@@ -19,3 +19,8 @@
 .interest svg:hover{
     fill: $green;
 }
+@media (min-width: 1200px) {
+    .interest ul {
+        margin-bottom: 2rem;
+    }
+  }

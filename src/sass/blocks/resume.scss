@@ -1,6 +1,7 @@
+
 .resume{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
   "name" 
   "experience"
@@ -10,7 +11,15 @@
   "language"
   "interest"
   "contact"; 
+  align-items: center;
+  margin: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  align-self: center;
+
 }
+
 .visually-hidden{
     visibility: hidden;
 }
@@ -18,15 +27,19 @@
 html{
     font-size: $font-size;
 }
-
+h1{
+  margin:0;
+  line-height: 0;
+  font-size: 0;
+}
 h2{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 200;
     margin: 0;
   }
   
 h3{
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: $green;
     font-weight: 100;
     margin-top: 0.5rem;
@@ -52,8 +65,17 @@ h5{
     margin-top: 0;
     margin-bottom: 0.7rem;
 }
-
-
+@media (min-width:900px){
+  .resume{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "name contact"
+    "experience skill"
+    "education course"
+    "language interest"; 
+   
+}
+}
 @media (min-width: 1200px) {
   .resume{
       grid-template-columns: 2fr 1fr;
@@ -62,25 +84,25 @@ h5{
       "name contact"
       "experience skill"
       "education course"
-      "language interest"; 
-  }
-
-  .wrapper{
-    margin: 1rem 7.3rem;
+      "language interest";
+      margin: 1rem 7.3rem;
     padding-left: 7rem;
-    padding-right: 7rem;
+    padding-right: 7rem; 
+    font-size: 1rem;
+  }
+
+  h2{
+    font-size: 2rem;
+    font-weight: 200;
+    margin: 0;
+  }
+  
+h3{
+    font-size: 1.5rem;
+    color: $green;
+    font-weight: 100;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   }
 
-@media (min-width:900px){
-  .resume{
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-    "name"
-    "experience skill"
-    "education course"
-    "language interest"
-    "contact"; 
-}
-
-}
