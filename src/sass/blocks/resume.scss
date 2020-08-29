@@ -73,7 +73,8 @@ h5{
     "experience skill"
     "education course"
     "language interest"; 
-   
+    align-items: flex-start;
+    font-size: 1rem;
 }
 }
 @media (min-width: 1200px) {
@@ -85,10 +86,8 @@ h5{
       "experience skill"
       "education course"
       "language interest";
-      margin: 1rem 7.3rem;
     padding-left: 7rem;
     padding-right: 7rem; 
-    font-size: 1rem;
   }
 
   h2{

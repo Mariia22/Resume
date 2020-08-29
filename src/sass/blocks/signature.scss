@@ -10,14 +10,16 @@
     padding:0;
     text-align: justify;
  }
-@media (min-width: 1200px) {
-    .signature{
-    margin: 1rem 7.3rem;
+
+@media (min-width: 900px) {
+.signature{
+    margin:0;
     padding-left: 2rem;
     padding-right: 2rem;
     font-size: 0.8rem;
 }
 .signature_text{
-   text-align: center;
+   text-align: justify;
+   text-indent: 20px;
 }
 }
